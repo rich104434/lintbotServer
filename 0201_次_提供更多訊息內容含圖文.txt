@@ -1,0 +1,43 @@
+#相關課程
+def sendCarousel(event):  #相關課程
+    try:
+        message = TemplateSendMessage(
+            alt_text='相關課程',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/vZ9nvzq.png',
+                        title='皮革教室',
+                        text='課程訊息',
+                        actions=[
+                            MessageTemplateAction(
+                                label='購買課程',
+                                text='購買課程'
+                            ),
+                            URITemplateAction(
+                                label='連結報名表',
+                                uri='https://www.beclass.com/default.php?name=ShowList&file=regist&rgstid=23417225d9effaa63a9a&contact_board=true'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/b7HTaCE.jpg',
+                        title='手做皮件課',
+                        text='課程訊息',
+                        actions=[
+                            MessageTemplateAction(
+                                label='購買課程',
+                                text='購買課程'
+                            ),
+                            URITemplateAction(
+                                label='課程介紹',
+                                uri='https://www.sobdeall.com.tw/2021/03/05/%E8%AA%B2%E7%A8%8B%EF%BD%9C90%E5%A4%A9%E6%89%8B%E4%BD%9C%E7%9A%AE%E9%9D%A9%E5%8C%85/'
+                            ),
+                        ]
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token,message)
+    except:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！')) 

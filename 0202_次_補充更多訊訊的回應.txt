@@ -1,0 +1,22 @@
+#確認是否購買課程
+def sendConfirmLearn(event):  
+    try:
+        message = TemplateSendMessage(
+            alt_text='購買課程',
+            template=ConfirmTemplate(
+                text='你確定要購買這個課程嗎？',
+                actions=[
+                    MessageTemplateAction(  #按鈕選項
+                        label='是的',
+                        text='是的'
+                    ),
+                    MessageTemplateAction(
+                        label='否',
+                        text='否'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+    except:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))

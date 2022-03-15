@@ -1,0 +1,19 @@
+#回答 是的 回訊
+def sendYes(event):
+    try:
+        message = TextSendMessage(
+            text='感謝您的購買，\n我們將盡快寄出商品。',
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+    except:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
+        
+  #回答 否 的回訊
+def sendNo(event):
+    try:
+        message = TextSendMessage(
+            text='謝謝您的詢問\n希望有機會再為您服務。',
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+    except:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))     
